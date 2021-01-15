@@ -31,6 +31,13 @@ prod_mat = matrix_sandbox_1 * matrix_sandbox_2
 det_mat = det(matrix_sandbox_1)
 inv_mat = inv(matrix_sandbox_2)
 
+poles_a = pole(sys_a)
+poles_b = pole(sys_b)
+poles_c = pole(sys_c)
+roots_a = zero(sys_a)
+roots_b = zero(sys_b)
+roots_c = zero(sys_c)
+
 %--------------------------------------------------------%
 %-----------------Problem 3---------------------------%
 syms s_1
