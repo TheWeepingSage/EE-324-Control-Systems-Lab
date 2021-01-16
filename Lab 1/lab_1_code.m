@@ -17,8 +17,8 @@ sys_a = series(sys_1, sys_2);
 sys_b = parallel(sys_1, sys_2);
 sys_c = feedback(sys_1, sys_2);
 
-step(sys_a, sys_b, sys_c)
-legend("System a", "System b", "System c")
+step(sys_1)
+title("Step response for system G1")
 
 %--------------------------------------------------------%
 %-----------------Problem 2---------------------------%
