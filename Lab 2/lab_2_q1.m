@@ -18,18 +18,18 @@ hold off
 
 %---------------------Part c-----------------------------%
 %---------------------------------------------------------%
-% figure
-% hold on
-% step(sys_a);
-% xline(step_a_info.RiseTime, "--", "Rise Time: a = 44");
-% for i_part_c=2:100
-%     num = num+sym2poly(44 + 0*s);
-%     sys_temp = tf(num, den);
-%     step(sys_temp);
-% end
-% step_final_info = stepinfo(sys_temp);
-% xline(step_final_info.RiseTime, "--", "Rise Time: a = 4400");
-% hold off
+figure
+hold on
+step(sys_a);
+xline(step_a_info.RiseTime, "--", "Rise Time: a = 44");
+for i_part_c=2:100
+    num = num+sym2poly(44 + 0*s);
+    sys_temp = tf(num, den);
+    step(sys_temp);
+end
+step_final_info = stepinfo(sys_temp);
+xline(step_final_info.RiseTime, "--", "Rise Time: a = 4400");
+hold off
 
 %---------------------Part d-----------------------------%
 %---------------------------------------------------------%
