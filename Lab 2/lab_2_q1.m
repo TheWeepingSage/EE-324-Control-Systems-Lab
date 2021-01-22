@@ -44,5 +44,7 @@ for i_part_d=1:100
     legend_str(i_part_d) = "b=" + den(2);
 end
 step_final_info = stepinfo(sys_temp);
-xline(step_final_info.RiseTime, "--", "Rise Time: b = 1300");
 legend(legend_str)
+xline(step_final_info.RiseTime, "--", "Rise Time: b = 1300");
+xline(step_a_info.RiseTime, "--", "Rise Time: b=13");
+
