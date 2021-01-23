@@ -20,15 +20,16 @@ hold off
 %---------------------------------------------------------%
 figure
 hold on
-step(sys_a);
-xline(step_a_info.RiseTime, "--", "Rise Time: a = 44");
+step_info_str = struct(step_a_info);
 for i_part_c=2:100
     num = num+sym2poly(44 + 0*s);
     sys_temp = tf(num, den);
-    step(sys_temp);
+    step_info_str(i_part_c) =  stepinfo(sys_temp);
 end
-step_final_info = stepinfo(sys_temp);
-xline(step_final_info.RiseTime, "--", "Rise Time: a = 4400");
+step_info_table = struct2table(step_info_str);
+plot(44:44:4400, step_info_table.RiseTime)
+xlabel("a");
+ylabel("Rise Time");
 hold off
 
 %---------------------Part d-----------------------------%
@@ -37,14 +38,14 @@ num = sym2poly(44 + 0*s);
 figure
 hold on
 legend_str = string([]);
-for i_part_d=1:100
+step_info_str_2 = struct(step_a_info);
+for i_part_d=2:100
     den = sym2poly(13*i_part_d + s);
     sys_temp = tf(num, den);
-    step(sys_temp);
-    legend_str(i_part_d) = "b=" + den(2);
+    step_info_str_2(i_part_d) = stepinfo(sys_temp);
 end
-step_final_info = stepinfo(sys_temp);
-legend(legend_str)
-xline(step_final_info.RiseTime, "--", "Rise Time: b = 1300");
-xline(step_a_info.RiseTime, "--", "Rise Time: b=13");
-
+step_info_table_2 = struct2table(step_info_str_2);
+plot(13:13:1300, step_info_table_2.RiseTime)
+xlabel("b");
+ylabel("Rise Time")
+hold off
