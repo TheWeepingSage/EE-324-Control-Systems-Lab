@@ -37,17 +37,3 @@ plot(poles_sys, 'o')
 xlabel("Real part")
 ylabel("Imaginary Part")
 xlim([-6.5, 0.5])
-
-%---------------------Part d-----------------------------%
-%---------------------------------------------------------%
-rhStabilityCriterion(cell2mat(sys_feedback.Denominator), 1)
-
-% For K=K_0+0.1
-sys_series_new = series(tf(k+0.1, 1), sys_g);
-sys_feedback_new = feedback(sys_series_new, 1);
-rhStabilityCriterion(cell2mat(sys_feedback_new.Denominator), 1)
-
-% For K=k_0+0.2
-sys_series_new = series(tf(k+0.2, 1), sys_g);
-sys_feedback_new = feedback(sys_series_new, 1);
-rhStabilityCriterion(cell2mat(sys_feedback_new.Denominator), 1)
