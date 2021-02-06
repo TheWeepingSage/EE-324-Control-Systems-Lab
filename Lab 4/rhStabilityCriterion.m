@@ -17,7 +17,7 @@
 %   2007/11/12
 
 %% Initialization
-function rhStabilityCriterion(coeffVector)
+function rhStabilityCriterion(coeffVector, bool_stability)
 
 % Taking coefficients vector and organizing the first two rows
 coeffLength = length(coeffVector);
@@ -39,9 +39,6 @@ else
 end
 
 %% Calculate Routh-Hurwitz table's rows
-
-%  Set epss as a small value
-epss = 0.00000000001;
 
 %  Calculate other elements of the table
 for i = 3:coeffLength
@@ -70,7 +67,7 @@ for i = 3:coeffLength
     
     %  special case: zero in the first column
     if rhTable(i,1) == 0
-        rhTable(i,1) = epss;
+        rhTable(i,1) = eps;
     end
 end
 
@@ -89,16 +86,19 @@ end
 fprintf('\n Routh-Hurwitz Table:\n')
 rhTable
 
-%   Print the stability result on screen
-if unstablePoles == 0
-    fprintf('~~~~~> it is a stable system! <~~~~~\n')
-else
-    fprintf('~~~~~> it is an unstable system! <~~~~~\n')
+if bool_stability == 1
+
+    %   Print the stability result on screen
+    if unstablePoles == 0
+        fprintf('~~~~~> it is a stable system! <~~~~~\n')
+    else
+        fprintf('~~~~~> it is an unstable system! <~~~~~\n')
+    end
+
+    fprintf('\n Number of right hand side poles =%2.0f\n',unstablePoles)
+
+    sysRoots = roots(coeffVector);
+    fprintf('\n Given polynomial coefficients roots :\n')
+    sysRoots
 end
-
-fprintf('\n Number of right hand side poles =%2.0f\n',unstablePoles)
-
-sysRoots = roots(coeffVector);
-fprintf('\n Given polynomial coefficients roots :\n')
-sysRoots
 end
