@@ -10,6 +10,6 @@ poly_b = conv(poly_2, [1 0 1]);
 rhStabilityCriterion(poly_b, 0);
 poly2sym(poly_b, s)
 
-poly_c = [1 2 3 4 5 6 9];
+poly_c = [1 2 3 4 6 8 3];
 rhStabilityCriterion(poly_c, 0);
 poly2sym(poly_c, s)
