@@ -20,5 +20,5 @@ num_1(s) = (s^2-1)*(s^2-4)*(s^2-9);
 num_2(s) = num_1(1i*s);
 num_d = num_2(s-3);
 den_d = 1;
-sys_d = tf(sym2poly(num_d), den_d);
+sys_d = tf(1, sym2poly(num_d));
 rlocus(sys_d)
