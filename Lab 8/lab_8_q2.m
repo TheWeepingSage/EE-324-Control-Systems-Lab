@@ -6,8 +6,7 @@ figure
 hold on
 for i = 1:20
     sys_compensator = tf([1, K_1s(i)], [1, K_2s(i)]);
-    sys_temp = series(sys_compensator, sys_2);
-    step(sys_temp);
+    step(sys_compensator);
 end
 legend("K_1 = " + string(K_1s))
 hold off
@@ -16,8 +15,7 @@ figure
 hold on
 for i = 1:20
     sys_compensator = tf([1, K_1s(i)], [1, K_2s(i)]);
-    sys_temp = series(sys_compensator, sys_2);
-    impulse(sys_temp);
+    impulse(sys_compensator);
 end
 legend("K_1 = " + string(K_1s))
 hold off
